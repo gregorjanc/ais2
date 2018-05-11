@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui">
+
+<script> $.noConflict(); </script>
+<ui:composition template="WEB-INF/template/templateNew.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+			<h:form>
+				<h1>Pregled uporabnika</h1>
+				
+				Uporabnik:
+				<h:selectOneMenu value="#{plebNew.izbranClan}">
+					<f:selectItems value="#{plebNew.clani}" var="clan"
+						itemValue="#{clan.id}" itemLabel="#{clan}"></f:selectItems>
+
+				</h:selectOneMenu>
+
+				<h:commandButton value="Izberi" actionListener="#{plebNew.izberiPleba}" />
+
+				<h3>dodajanje nove meritve</h3>
+				
+				Datum meritve:	<input type="date" jsf:value="#{plebNew.meritev.datumMeritve.time}">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+				</input>
+				<br />
+			Telesna visina:	<h:inputText id="visina" value="#{plebNew.meritev.telesnaVisina}"
+					validatorMessage="Visina?" converterMessage="To ni stevilo">
+					<f:validateRequired />
+				</h:inputText>*
+			<h:message for="visina" />
+				<br />
+			Obseg pasu:	<h:inputText id="obseg" value="#{plebNew.meritev.obsegPasu}"
+					validatorMessage="Obseg?" converterMessage="To ni stevilo">
+					<f:validateRequired />
+				</h:inputText>*
+			<h:message for="obseg" />
+				<br />
+			Teza:	<h:inputText id="teza" value="#{plebNew.meritev.teza}"
+					validatorMessage="Teza?" converterMessage="To ni stevilo">
+					<f:validateRequired />
+				</h:inputText>*
+			<h:message for="teza" />
+				<br />
+				<h:commandButton value="Dodaj" actionListener="#{plebNew.dodajMeritev}" />
+
+
+				<br />
+
+
+
+				<h3>pregled meritev</h3>
+
+
+
+				<h:dataTable value="#{plebNew.seznamMeritve}" var="m">
+
+
+					<h:column>
+						<f:facet name="header">Datum meritve</f:facet>
+
+						<h:outputText value="#{m.datum}"></h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Teza</f:facet>
+
+						<h:outputText value="#{m.teza}"></h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Obseg pasu</f:facet>
+
+						<h:outputText value="#{m.obsegPasu}"></h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Visina</f:facet>
+
+						<h:outputText value="#{m.telesnaVisina}"></h:outputText>
+
+					</h:column>
+
+				</h:dataTable>
+
+
+
+
+
+
+
+				<h3>graf teze in ITM</h3>
+				Od:	<input type="date" jsf:value="#{plebNew.odDatuma.time}">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+				</input>
+				Do:	<input type="date" jsf:value="#{plebNew.doDatuma.time}">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+				</input>
+				<h:commandButton value="Izberi" actionListener="#{plebNew.izberiObdobje}" />
+				<h:commandButton value="Preklopi prikaz" actionListener="#{plebNew.preklopiPrikaz}" />
+				
+
+				<h:dataTable value="#{plebNew.uporabaIteratorja}" var="m">
+
+					<h:column>
+						<f:facet name="header">Datum meritve</f:facet>
+
+						<h:outputText value="#{m.datum}"></h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Teza</f:facet>
+
+						<h:outputText value="#{m.teza}"></h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Obseg pasu</f:facet>
+
+						<h:outputText value="#{m.obsegPasu}"></h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Visina</f:facet>
+
+						<h:outputText value="#{m.telesnaVisina}"></h:outputText>
+
+					</h:column>
+
+				</h:dataTable>
+				
+				  <p:chart type="line" model="#{plebNew.lineModel}" style="height:300px;" />  
+			
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

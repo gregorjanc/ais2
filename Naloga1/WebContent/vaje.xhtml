@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	>
+
+
+<ui:composition template="WEB-INF/template/templatenew.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+
+			<h1>Vse vaje</h1>
+			<h:form>
+			<h:dataTable value="#{vaja.sezanmVseh}" var="v">
+
+				<h:column>
+					<f:facet name="header">Naziv vaje</f:facet>
+
+					<h:outputText value="#{v.nazivVaje}"></h:outputText>
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">Sifra vaje</f:facet>
+
+					<h:outputText value="#{v.sifraVaje}"></h:outputText>
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">Del telesa</f:facet>
+
+					<h:outputText value="#{v.delTelesa}"></h:outputText>
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">naprava</f:facet>
+
+					<h:outputText value="#{v.naprava}"></h:outputText>
+
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">opis</f:facet>
+
+					<h:outputText value="#{v.opis}"></h:outputText>
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">slika</f:facet>
+
+					<h:outputText value="#{v.slika}"></h:outputText>
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">Video</f:facet>
+
+					<h:outputText value="#{v.video}"></h:outputText>
+
+				</h:column>
+				
+				<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandButton value="Podrobnosti" action="#{vaja.podrobnosti(v)}"></h:commandButton>
+					</h:column>
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandButton value="Uredi" actionListener="#{vaja.uredi(v)}"></h:commandButton>
+					</h:column>
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandButton value="Izbrisi" actionListener="#{vaja.izbrisi(v)}"></h:commandButton>
+					</h:column>
+			
+			</h:dataTable>
+			</h:form>
+			<h1 ><h:outputText value="#{vaja.naslovVnosa}" /></h1>
+				<h:form>
+					Ime vaje: <h:inputText id="imeVaje" value="#{vaja.vajaTrenuten.nazivVaje}"
+					validatorMessage=" Ime?">
+					<f:validateRequired />
+				</h:inputText>
+				<h:message for="imeVaje" />
+				
+					sifra: <h:inputText id="sifra" value="#{vaja.vajaTrenuten.sifraVaje}"
+					validatorMessage=" sifra?">
+					<f:validateRequired />
+				</h:inputText>
+				<h:message for="sifra" />
+				
+				del telesa: <h:inputText id="delTelesa" value="#{vaja.vajaTrenuten.delTelesa}"
+					validatorMessage=" del telesa?">
+					<f:validateRequired />
+				</h:inputText>
+				<h:message for="delTelesa" />
+				
+				naprava: <h:inputText id="naprava" value="#{vaja.vajaTrenuten.naprava}"
+					validatorMessage=" naprava?">
+					<f:validateRequired />
+				</h:inputText>
+				<h:message for="naprava" />
+		
+				opis: <h:inputText id="opis" value="#{vaja.vajaTrenuten.opis}"
+					validatorMessage=" opis?">
+					<f:validateRequired />
+				</h:inputText>
+				<h:message for="opis" />
+				
+				slika: <h:inputText id="slika" value="#{vaja.vajaTrenuten.slika}"
+					validatorMessage=" slika?">
+					<f:validateRequired />
+				</h:inputText>
+				<h:message for="slika" />
+				
+				video: <h:inputText id="video" value="#{vaja.vajaTrenuten.video}"
+					validatorMessage=" video?">
+					<f:validateRequired />
+				</h:inputText>
+				<h:message for="video" />
+				
+				<h:commandButton value="Dodaj" actionListener="#{vaja.dodajVajo}" />
+				</h:form>
+
+
+
+
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

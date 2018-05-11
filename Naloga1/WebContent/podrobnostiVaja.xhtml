@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="WEB-INF/template/template.xhtml">
+
+
+
+
+	<ui:define name="content">
+		<f:view>
+			<h:form>
+
+
+				<h1>Podrobnosti</h1>
+					Naziv:
+				<h:outputLabel value="#{vaja.vajaPodrobnosti.nazivVaje}"></h:outputLabel>
+				<br />
+				Sifra: 
+				<h:outputLabel value="#{vaja.vajaPodrobnosti.sifraVaje}"></h:outputLabel>
+				<br />
+				Del telesa: 
+				<h:outputLabel value="#{vaja.vajaPodrobnosti.delTelesa}"></h:outputLabel>
+				<br />
+				Naprava: 
+				<h:outputLabel value="#{vaja.vajaPodrobnosti.naprava}"></h:outputLabel>
+				<br />
+				opis: 
+				<h:outputLabel value="#{vaja.vajaPodrobnosti.opis}"></h:outputLabel>
+				<br />
+				slika: 
+				<h:graphicImage height="500" value="#{vaja.vajaPodrobnosti.slika}"></h:graphicImage>
+				<br />
+				video:
+				<!-- <iframe width="1280" height="720" src="#{vaja.vajaPodrobnosti.video}" /> -->
+			
+			 	<iframe width="560" height="315" src="#{vaja.urlzavideo}" frameborder="0" allow="autoplay; encrypted-media" ></iframe> 
+			
+				<br />
+
+
+				
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

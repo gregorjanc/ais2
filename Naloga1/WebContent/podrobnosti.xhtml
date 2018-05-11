@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<ui:composition template="WEB-INF/template/template.xhtml">
+
+
+
+
+	<ui:define name="content">
+		<f:view>
+			<h:form>
+
+
+				<h1>Podrobnosti</h1>
+					Ime:
+				<h:outputLabel value="#{model.izbranClan.ime}"></h:outputLabel>
+				<br />
+				Priimek: 
+				<h:outputLabel value="#{model.izbranClan.priimek}"></h:outputLabel>
+				<br />
+				Spol: 
+				<h:outputLabel value="#{model.izbranClan.spol}"></h:outputLabel>
+				<br />
+				Datum rojstva: 
+				<h:outputLabel value="#{model.izbranClan.izpisiDatumR}"></h:outputLabel>
+				<br />
+				Datum vpisa: 
+				<h:outputLabel value="#{model.izbranClan.izpisiDatum}"></h:outputLabel>
+				<br />
+				Sifra: 
+				<h:outputLabel value="#{model.izbranClan.sifra}"></h:outputLabel>
+				<br />
+				Email:
+				<h:outputLabel value="#{model.izbranClan.email}"></h:outputLabel>
+				<br />
+
+
+				<h3>Meritve</h3>
+				
+				<h:dataTable
+					value="#{model.seznamMeritev}"
+					var="m">
+					
+					<h:column>
+						<f:facet name="header">Datum meritve</f:facet>
+					
+						<h:outputText value="#{m.datum}"></h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Teza</f:facet>
+					
+						<h:outputText value="#{m.teza}"></h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Obseg pasu</f:facet>
+					
+						<h:outputText value="#{m.obsegPasu}"></h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Visina</f:facet>
+					
+						<h:outputText value="#{m.telesnaVisina}"></h:outputText>
+
+					</h:column>
+
+				</h:dataTable>
+
+
+				<h3>Dodaj meritev</h3>
+				
+				
+				
+			Datum meritve:	<input type="date"
+					jsf:value="#{model.datumMeritve.time}">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+				</input>
+				<br />
+			Telesna visina:	<h:inputText id="visina" value="#{model.telesnaVisina}" validatorMessage="Visina?" converterMessage="To ni stevilo">
+			<f:validateRequired />
+			</h:inputText>*
+			<h:message for="visina" />
+				<br />
+			Obseg pasu:	<h:inputText id="obseg" value="#{model.obsegPasu}" validatorMessage="Obseg?" converterMessage="To ni stevilo">
+			<f:validateRequired />
+			</h:inputText>*
+			<h:message for="obseg" />
+				<br />
+			Teza:	<h:inputText id="teza" value="#{model.teza}" validatorMessage="Teza?" converterMessage="To ni stevilo">
+			<f:validateRequired />
+			</h:inputText>*
+			<h:message for="teza" />
+				<br />
+				<h:commandButton value="Dodaj"
+					actionListener="#{model.dodajMeritev}" />
+
+
+
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

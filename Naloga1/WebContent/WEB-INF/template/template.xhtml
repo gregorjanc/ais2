@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title><ui:insert name="title">Fitnes</ui:insert></title>
+	<link rel="stylesheet" type="text/css" href="css.css" />
+</h:head>
+
+<body>
+
+	<div id="header">
+		<ui:insert name="header">
+			<button onclick="location.href='/Naloga1/faces/index.xhtml'"
+				type="button">Dodaj clana</button>
+			<button onclick="location.href='/Naloga1/faces/vsiClani.xhtml'"
+				type="button">Vsi clani</button>
+			<button onclick="location.href='/Naloga1/faces/plebejec.xhtml'"
+				type="button">Plebejci</button>
+				<button onclick="location.href='/Naloga1/faces/vaje.xhtml'"
+				type="button">Vaje</button>
+		</ui:insert>
+	</div>
+
+	<div id="content">
+		<ui:insert name="content">
+
+
+		</ui:insert>
+	</div>
+
+</body>
+</html>

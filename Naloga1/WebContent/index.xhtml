@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<ui:composition template="WEB-INF/template/template.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+			<h:form>
+				<h1>Dodaj clana</h1>			
+			Ime: <h:inputText id="ime" value="#{model.ime}"
+					validatorMessage=" Ime?">
+					<f:validateRequired />
+				</h:inputText>*
+				<h:message for="ime" />
+				<br />
+			Priimek: <h:inputText id="priimek" value="#{model.priimek}"
+					validatorMessage=" Priimek?">
+					<f:validateRequired />
+				</h:inputText>*
+				<h:message for="priimek"></h:message>
+				<br />
+			Datum rojstva: <input type="date"
+					jsf:value="#{model.datumRojstva.time}">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+				</input>
+				<br />
+			Email:	<h:inputText id="email" value="#{model.email}"
+					validatorMessage=" Email?">
+					<f:validateRequired />
+					<f:validateRegex pattern=".+\@.+\..+" />
+				</h:inputText>*
+				<h:message for="email" />
+				<br />
+			Šifra:	<h:inputText id="sifra" value="#{model.sifra}"
+					validatorMessage=" Sifra?">
+					<f:validateRequired />
+				</h:inputText>*
+				<h:message for="sifra" />
+				<br />
+			Spol:*	<h:selectOneRadio id="spol" value="#{model.spol}"
+					validatorMessage="Spol?">
+					<f:selectItem itemValue="zenska" itemLabel="zenska" />
+					<f:selectItem itemValue="moski" itemLabel="moski" />
+					<h:message for="spol" />
+					<f:validateRequired />
+				</h:selectOneRadio>
+				<br />
+				Paket:
+				<h:selectOneMenu value="#{model.izbranPaket}">
+					<f:selectItem itemValue="obicajen" itemLabel="obicajen"></f:selectItem>
+
+					<f:selectItem itemLabel="mesecni" itemValue="mesecni"></f:selectItem>
+
+					<f:selectItem itemLabel="letni" itemValue="letni"></f:selectItem>
+				</h:selectOneMenu>
+
+				<h:commandButton value="Dodaj" actionListener="#{model.dodajClana}" />
+				<br />
+
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>
